@@ -25,8 +25,16 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.19.0'
+
       - name: Create .env file
         run: |
+          # Create .nvmrc to force Azure Static Web Apps to use Node 20.19.0
+          echo "20.19.0" > src/apps/client/.nvmrc
+
           echo "NEXT_PUBLIC_SANITY_PROJECT_ID=${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}" >> src/apps/client/.env
           echo "NEXT_PUBLIC_SANITY_DATASET=${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}" >> src/apps/client/.env
           echo "NEXT_PUBLIC_SANITY_API_VERSION=${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}" >> src/apps/client/.env
