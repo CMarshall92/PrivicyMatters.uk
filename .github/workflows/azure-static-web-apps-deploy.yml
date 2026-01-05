@@ -6,12 +6,14 @@ on:
       - main
     paths:
       - 'src/apps/client/**'
+      - '.github/workflows/azure-static-web-apps-deploy.yml'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
     paths:
       - 'src/apps/client/**'
+      - '.github/workflows/azure-static-web-apps-deploy.yml'
 
 jobs:
   build_and_deploy_job:
