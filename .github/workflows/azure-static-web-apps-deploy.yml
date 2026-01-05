@@ -52,6 +52,8 @@ jobs:
           app_location: "src/apps/client"
           api_location: ""
           output_location: ""
+        env:
+          NODE_VERSION: 20.19.0
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
